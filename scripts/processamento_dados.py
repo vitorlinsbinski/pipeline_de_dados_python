@@ -67,7 +67,7 @@ class Dados:
         return Dados(combined_list, 'list')
     
     def __transformar_dados_tabela(self):
-        nomes_colunas = self.__get_columns()
+        nomes_colunas = self.nome_colunas
         dados_transformados = [nomes_colunas]
 
         for row in self.dados:
