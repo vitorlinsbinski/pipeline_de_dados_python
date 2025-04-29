@@ -52,15 +52,17 @@ To ensure a clean and isolated environment for running the project, follow these
     python3 -m venv .venv
 ```
 
-2. Activate the virtual environment:
-• On Linux/MacOS:
-```bash
-    source .venv/bin/activate
-```
-• On Windows:
-```bash
-    venv\Scripts\activate
-```
+2. **Activate the virtual environment**:
+
+   - **On Linux/MacOS**:
+     ```bash
+     source .venv/bin/activate
+     ```
+
+   - **On Windows**:
+     ```bash
+     .venv\Scripts\activate
+     ```
 
 3. Install dependencies:
 ```bash
