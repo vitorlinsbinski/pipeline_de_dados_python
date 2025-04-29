@@ -3,11 +3,11 @@ import csv
 
 class Dados:
     def __init__(self, path, tipo_dados):
-        self.path = path
-        self.tipo_dados = tipo_dados
+        self.__path = path
+        self.__tipo_dados = tipo_dados
         self.dados = self.__leitura_dados()
         self.nome_colunas = self.__get_columns()
-        self.qtd_linhas = self.size_data()
+        self.qtd_linhas = self.__size_data()
     
     def __get_columns(self):
         return list(self.dados[-1].keys())
@@ -15,14 +15,14 @@ class Dados:
     def __leitura_json(self):
         dados_json = []
 
-        with open(self.path, 'r') as file:
+        with open(self.__path, 'r') as file:
             dados_json = json.load(file)
         return dados_json
 
     def __leitura_csv(self):
         dados_csv = []
 
-        with open(self.path, 'r') as file:
+        with open(self.__path, 'r') as file:
             spamreader = csv.DictReader(file, delimiter=',')
 
             for row in spamreader:
@@ -32,17 +32,20 @@ class Dados:
 
     def __leitura_dados(self):
         dados = []
-        tipo_dados = self.tipo_dados
+        tipo_dados = self.__tipo_dados
 
         if tipo_dados == 'csv':
             dados = self.__leitura_csv()
         elif tipo_dados == 'json':
             dados = self.__leitura_json()
         elif tipo_dados == 'list':
-            dados = self.path
-            self.path = 'lista em memória'
+            dados = self.__path
+            self.__path = 'lista em memória'
         
         return dados
+    
+    def __size_data(self):
+        return len(self.dados)
     
     def rename_columns(self, key_mapping):
         new_dados = []
@@ -56,8 +59,6 @@ class Dados:
         self.dados = new_dados
         self.nome_colunas = self.__get_columns()
     
-    def size_data(self):
-        return len(self.dados)
     
     def join(dadosA, dadosB):
         combined_list = []

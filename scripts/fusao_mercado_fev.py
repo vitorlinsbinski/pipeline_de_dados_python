@@ -34,3 +34,4 @@ print(dados_fusao.qtd_linhas)
 path_dados_combinados = 'data_processed/dados_combinados.csv'
 dados_fusao.salvar_dados(path_dados_combinados)
 print(path_dados_combinados)
+
